@@ -1,6 +1,7 @@
 plugins {
     id("java")
-    id("io.spring.dependency-management") version "1.1.3"
+    id("org.springframework.boot") version "3.3.1"
+    id("io.spring.dependency-management") version "1.1.5"
 }
 
 group = "com.example"
@@ -12,12 +13,13 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web:3.3.1")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.3.1")
-    implementation("com.h2database:h2:2.3.4")
-    annotationProcessor("org.projectlombok:lombok:1.18.42")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
     runtimeOnly("com.h2database:h2")
+
+    annotationProcessor("org.projectlombok:lombok:1.18.32")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 java {
