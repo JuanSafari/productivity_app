@@ -2,11 +2,14 @@ package com.example.productivity_app.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "app_users")
 @Data
 public class User {
     @Id
@@ -22,5 +25,7 @@ public class User {
     Integer totalXP;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude // Prevent circular reference in toString
+    @EqualsAndHashCode.Exclude // Prevent circular reference in equals/hashCode
     private List<Quest> quests = new ArrayList<>();
 }

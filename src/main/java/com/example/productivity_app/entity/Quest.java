@@ -2,6 +2,8 @@ package com.example.productivity_app.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
@@ -27,5 +29,7 @@ public class Quest {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @ToString.Exclude // Prevent circular reference in toString
+    @EqualsAndHashCode.Exclude // Prevent circular reference in equals/hashCode
     private User owner;
 }
